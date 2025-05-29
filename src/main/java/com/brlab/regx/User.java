@@ -25,9 +25,15 @@ public class User {
     }
 
     //Method to validate mobile number
-    public static boolean validateMobileNumber(String mobileNumber)
+//    public static boolean validateMobileNumber(String mobileNumber)
+//    {
+//        return mobileNumber.matches("^[0-9]{2,}\\s[0-9]{10}");
+//    }
+
+    //Method to validate password as per Rule-1
+    public static boolean validatePasswordRuleOne(String passwordRuleOne)
     {
-        return mobileNumber.matches("^[0-9]{2,}\\s[0-9]{10}");
+        return passwordRuleOne.matches("^[^\\s]{8,}");
     }
     public static void main(String[] args)
     {
@@ -43,9 +49,12 @@ public class User {
 //        System.out.println("Enter email");
 //        String email=scanner.nextLine();
 //        System.out.println("Email validate "+validateEmail(email));
-        System.out.println("Enter mobile number");
-        String mobileNUmber=scanner.nextLine();
-        System.out.println("Email validate "+validateMobileNumber(mobileNUmber));
+//        System.out.println("Enter mobile number");
+//        String mobileNUmber=scanner.nextLine();
+//        System.out.println("mobile number validate "+validateMobileNumber(mobileNUmber));
+        System.out.println("Enter the password");
+        String password=scanner.nextLine();
+        System.out.println("Passwod validate"+validatePasswordRuleOne(password));
 
 
     }
