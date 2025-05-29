@@ -42,6 +42,12 @@ public class User {
         return passwordRuleTwo.matches("^(?=.*[A-Z])[^\\s]{8,}$");
     }
 
+    //Method to validate password as per Rule-3
+    public static boolean validateRuleThree(String passwordRuleThree)
+    {
+        return passwordRuleThree.matches("(?=.*[0-9])(?=.*[A-Z])[^\\s]{8,}$");
+    }
+
 
     public static void main(String[] args)
     {
@@ -63,9 +69,14 @@ public class User {
 //        System.out.println("Enter the password");
 //        String password=scanner.nextLine();
 //        System.out.println("Password validate"+validatePasswordRuleOne(password));
+//        System.out.println("Enter password");
+//        String passwordRuleTwo=scanner.nextLine();
+//        System.out.println("password validate "+validateRuleTwo(passwordRuleTwo));
+
         System.out.println("Enter password");
-        String passwordRuleTwo=scanner.nextLine();
-        System.out.println("password validate "+validateRuleTwo(passwordRuleTwo));
+        String passwordRuleThree=scanner.nextLine();
+        System.out.println("password validate "+validateRuleThree(passwordRuleThree));
+
 
     }
 }
