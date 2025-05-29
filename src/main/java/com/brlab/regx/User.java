@@ -1,6 +1,8 @@
 package com.brlab.regx;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class User {
 
@@ -54,6 +56,24 @@ public class User {
         return passwordRuleFour.matches("^(?=.*[A-Z])(?=.*[0-9])[^\\s](?=^[^\\W_]*[\\W_][^\\W_]*$).{8,}$");
     }
 
+    // UC-9: Reusable method to validate emails (same as UC-3, could be improved by avoiding duplication)
+    // Set to store previously validated (unique) email addresses
+    private static final Set<String> emailSet = new HashSet<>();
+    public static boolean validEmail(String email)
+    {
+        String emailRegex= ("^[a-zA-Z0-9]+([._+-]+[a-zA-Z0-9])?@[a-zA-Z0-9]+[a-zA-Z0-9]+\\.[a-z]{2,4}(\\.[a-z]{2,})?$");
+        // Normalize to lowercase to avoid case-sensitive duplicates
+        email = email.toLowerCase();
+
+        // Check format and duplication
+        if (email.matches(emailRegex) && !emailSet.contains(email)) {
+            emailSet.add(email); // Store the email as validated
+            return true;
+        }
+
+        return false; // Invalid format or duplicate
+    }
+
 
     public static void main(String[] args)
     {
@@ -86,6 +106,15 @@ public class User {
         System.out.println("Enter password");
         String passwordRuleFour=scanner.nextLine();
         System.out.println("password validate "+validateRuleFour(passwordRuleFour));
+
+        // Final email input to test sample validation again (UC-9)
+        String[] testEmails = {"abc@yahoo.com","abc-100@yahoo.com","abc.100@yahoo.com","abc111@abc.com","abc-100@abc.net",
+                "abc.100@abc.com.au","abc@1.com","abc@gmail.com.com","abc+100@gmail.com"};
+
+        for (String email : testEmails) {
+            boolean isValid = validEmail(email);
+            System.out.println(email + " => " + (isValid ? "Valid & Added" : "Invalid or Duplicate"));
+        }
 
     }
 }
