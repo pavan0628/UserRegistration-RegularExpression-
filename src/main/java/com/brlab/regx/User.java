@@ -24,6 +24,11 @@ public class User {
         //return email.matches("^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\\.[a-zA-Z]{2,})+$");
     }
 
+    //Method to validate mobile number
+    public static boolean validateMobileNumber(String mobileNumber)
+    {
+        return mobileNumber.matches("^[0-9]{2,}\\s[0-9]{10}");
+    }
     public static void main(String[] args)
     {
         Scanner scanner=new Scanner(System.in);
@@ -35,9 +40,12 @@ public class User {
 //        String lastName=scanner.nextLine();
 //        System.out.println("Second name having First character Upper and having minium 3 character "+validateSecondName(lastName));
 
-        System.out.println("Enter email");
-        String email=scanner.nextLine();
-        System.out.println("Email validate "+validateEmail(email));
+//        System.out.println("Enter email");
+//        String email=scanner.nextLine();
+//        System.out.println("Email validate "+validateEmail(email));
+        System.out.println("Enter mobile number");
+        String mobileNUmber=scanner.nextLine();
+        System.out.println("Email validate "+validateMobileNumber(mobileNUmber));
 
 
     }
