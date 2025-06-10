@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserRegistrationTest {
 
+    // Happy test Cases
     @Test
    void validateFirstNameTest(){
        assertTrue(User.validateFirstName("Vinay"));
@@ -28,6 +29,17 @@ class UserRegistrationTest {
     @Test
     public void testValidPassword() {
         assertTrue((User.validateRuleFour("Password@121")));
+    }
+
+    // Sad Test Cases
+    @Test
+    public void testInvalidFirstName() {
+        assertFalse(User.validateFirstName("jo"));
+    }
+
+    @Test
+    public void testInvalidEmail() {
+        assertFalse(User.validateEmail("abc@.com"));
     }
 
 }
