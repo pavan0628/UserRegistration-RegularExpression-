@@ -27,10 +27,10 @@ public class User {
     }
 
     //Method to validate mobile number
-//    public static boolean validateMobileNumber(String mobileNumber)
-//    {
-//        return mobileNumber.matches("^[0-9]{2,}\\s[0-9]{10}");
-//    }
+    public static boolean validateMobileNumber(String mobileNumber)
+    {
+        return mobileNumber.matches("^[0-9]{2,}\\s[0-9]{10}");
+    }
 
     //Method to validate password as per Rule-1
     public static boolean validatePasswordRuleOne(String passwordRuleOne)
@@ -51,9 +51,9 @@ public class User {
     }
 
     //Method to validate password as per Rule-4
-    private static boolean validateRuleFour(String passwordRuleFour)
+    public static boolean validateRuleFour(String passwordRuleFour)
     {
-        return passwordRuleFour.matches("^(?=.*[A-Z])(?=.*[0-9])[^\\s](?=^[^\\W_]*[\\W_][^\\W_]*$).{8,}$");
+        return passwordRuleFour.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
     }
 
     // UC-9: Reusable method to validate emails (same as UC-3, could be improved by avoiding duplication)
