@@ -9,19 +9,29 @@ public class User {
     //Method to validate first name
     public static boolean validateFirstName(String firstName)
     {
-        return firstName.matches("^[A-Z][a-zA-Z]{2,}$");
+       if(!firstName.matches("^[A-Z][a-zA-Z]{2,}$")){
+           throw new InvalidUserDetailsException("Invalid first name");
+       }
+       return true;
     }
 
     //Method to validate second name
     public static boolean validateLastName(String lastName)
     {
-        return lastName.matches("^[A-Z][a-zA-Z]{2,}$");
+        if(!lastName.matches("^[A-Z][a-zA-Z]{2,}$")){
+            throw new InvalidUserDetailsException("Invalid last name");
+        }
+        return true;
     }
 
     //Method to validate email
     public static  boolean validateEmail(String email)
     {
-        return  email.matches("^[a-zA-Z0-9]+([._+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\\.[a-z]{2,4}(\\.[a-z]{2})?$");
+        if(!email.matches("^[a-zA-Z0-9]+([._+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\\.[a-z]{2,4}(\\.[a-z]{2})?$")){
+            throw new InvalidUserDetailsException("Invalid email");
+        }
+
+         return true;
         //return email.matches("^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)?@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?$");
         //return email.matches("^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\\.[a-zA-Z]{2,})+$");
     }
@@ -29,7 +39,10 @@ public class User {
     //Method to validate mobile number
     public static boolean validateMobileNumber(String mobileNumber)
     {
-        return mobileNumber.matches("^[0-9]{2,}\\s[0-9]{10}");
+        if(!mobileNumber.matches("^[0-9]{2,}\\s[0-9]{10}")){
+            throw new InvalidUserDetailsException("Invalid number");
+        }
+        return true;
     }
 
     //Method to validate password as per Rule-1
@@ -53,7 +66,10 @@ public class User {
     //Method to validate password as per Rule-4
     public static boolean validateRuleFour(String passwordRuleFour)
     {
-        return passwordRuleFour.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
+        if(!passwordRuleFour.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")){
+            throw new InvalidUserDetailsException("Invalid password!");
+        }
+        return true;
     }
 
     // UC-9: Reusable method to validate emails (same as UC-3, could be improved by avoiding duplication)
