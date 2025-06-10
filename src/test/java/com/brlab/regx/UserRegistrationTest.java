@@ -1,6 +1,8 @@
 package com.brlab.regx;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,5 +43,14 @@ class UserRegistrationTest {
     public void testInvalidEmail() {
         assertFalse(User.validateEmail("abc@.com"));
     }
+
+    // UC11 - Parameterized Test for multiple emails
+    @ParameterizedTest
+    @ValueSource(strings = {"abc@yahoo.com", "abc-100@yahoo.com", "abc.100@abc.com.in"})
+    public void testValidMultipleEmails(String email) {
+        assertTrue(User.validateEmail(email));
+    }
+
+
 
 }
